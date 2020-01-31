@@ -5,41 +5,6 @@ const resultsContainer = document.getElementById("results");
 const submitButton = document.getElementById("submit");
 const leaderboardContainer = document.getElementById("leaderboard");
 
-
-//Core functions
-function buildQuiz() {
-  const output = [];
-  myQuestions.forEach(function(currentQuestion, questionAnswer) {
-    const answers = [];
-    for(letter in currentQuestion.answers) {
-      answers.push(
-        <label>
-          <input type="radio" name="question${questionNumber}" value="${letter}"></input>
-          ${letter}:
-          ${currentQuestion.answers[letter]}
-        </label>
-      );
-    };
-
-    output.push(<div class="question">${currentQuestion.question}</div><div class="answers">${answers.join("")}</div>);
-  }
-  );
-  quizContainer.innerHTML = output.join("");
-};
-
-function showResults(){
-
-};
-
-
-//Initialize the quiz
-
-buildQuiz();
-
-//Show results upon submitting
-
-submitButton.addEventListener("click", showResults);
-
 //Questions
 
 const myQuestions = [
@@ -72,4 +37,37 @@ const myQuestions = [
       correctAnswer: "d"
     }
   ];
+
+
+//Core functions
+function buildQuiz() {
+  const output = [];
+  myQuestions.forEach(function(currentQuestion, questionAnswer) {
+    const answers = [];
+    for(letter in currentQuestion.answers) {
+      answers.push(
+        
+          
+          
+      );
+    };
+
+    output.push();
+  }
+  );
+  quizContainer.innerHTML = output.join("");
+};
+
+function showResults(){
+
+};
+
+
+//Initialize the quiz
+
+buildQuiz();
+
+//Show results upon submitting
+
+submitButton.addEventListener("click", showResults);
 
