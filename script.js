@@ -7,8 +7,14 @@ const leaderboardContainer = document.getElementById("leaderboard");
 
 
 //Core functions
-function buildQuiz(){
+function buildQuiz() {
+  const output = [];
+  myQuestions.forEach(function(currentQuestion, questionAnswer) {
+    const answers = [];
+    for(letter in currentQuestion.answers) {
 
+    }
+  })
 };
 
 function showResults(){
