@@ -12,9 +12,19 @@ function buildQuiz() {
   myQuestions.forEach(function(currentQuestion, questionAnswer) {
     const answers = [];
     for(letter in currentQuestion.answers) {
+      answers.push(
+        <label>
+          <input type="radio" name="question${questionNumber}" value="${letter}"></input>
+          ${letter}:
+          ${currentQuestion.answers[letter]}
+        </label>
+      );
+    };
 
-    }
-  })
+    output.push(<div class="question">${currentQuestion.question}</div><div class="answers">${answers.join("")}</div>);
+  }
+  );
+  quizContainer.innerHTML = output.join("");
 };
 
 function showResults(){
