@@ -70,12 +70,12 @@ function showResults(){
 
   let numCorrect = 0;
 
-  myQuestions.forEach( (currentQuesstion, questionNumber) => {
+  myQuestions.forEach( (currentQuestion, questionNumber) => {
     const answerContainer = answerContainers[questionNumber];
-    const selector = `input [name=question${questionNumber}]:checked`;
+    const selector = `input[name=question${questionNumber}]:checked`;
     const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-    if(userAnswer === currentQuesstion.correctAnswer) {
+    if(userAnswer === currentQuestion.correctAnswer) {
       numCorrect++;
       answerContainers[questionNumber].style.color = 'lightgreen';
     } else {
