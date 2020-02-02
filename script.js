@@ -57,8 +57,10 @@ function buildQuiz() {
      }
      
      output.push(
-       `<div class="question"> ${currentQuestion.question} </div>
-       <div class="answers"> ${answers.join('')} </div>`
+       `<div class="slide">
+       <div class="question"> ${currentQuestion.question} </div>
+       <div class="answers"> ${answers.join('')} </div>
+       </div>`
      );
    }
  );
