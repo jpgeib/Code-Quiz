@@ -55,8 +55,6 @@
     slides[n].classList.add('active-slide');
     currentSlide = n;
 
-    
-
     if(currentSlide === 0) {
       previousButton.style.display = 'none';
     } else {
