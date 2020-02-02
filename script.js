@@ -15,7 +15,12 @@
             ${currentQuestion.answers[letter]}
           </label>`
         );
-      }
+      };
+
+      // for(let i = 0; i < myQuestions.length; i++) {
+      //   const questionDisplay = document.getElementById("current-question");
+         
+      // };
       
       output.push(
         `<div class="slide">
@@ -47,6 +52,22 @@
     });
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
   };
+
+  //Timer functions
+
+  function timeLimit(chosenTime) {
+    let timeInterval = setInterval(function() {
+      secondsLeft--;
+      timer.textContent = secondsLeft + " seconds remaining...";
+
+      if(secondsLeft === 0) {
+        clearInterval(timeInterval);
+        alert("Time has run out! Refresh the page to try again.")
+      }
+    }, 1000);
+  };
+
+  timeLimit();
 
   //Page functions
 
@@ -82,7 +103,10 @@
   const quizContainer = document.getElementById("quiz");
   const resultsContainer = document.getElementById("results");
   const submitButton = document.getElementById("submit");
+  const timer = document.querySelector(".time");
+  const mainEl = document.getElementById("main");
   const leaderboardContainer = document.getElementById("leaderboard");
+  var secondsLeft = 101;
 
   //Questions
 
@@ -118,8 +142,8 @@
     ];
 
   //Initialize the quiz
-
   buildQuiz();
+  
 
   //Pagination
   const previousButton = document.getElementById("previous");
