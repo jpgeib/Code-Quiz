@@ -16,11 +16,6 @@
           </label>`
         );
       };
-
-      // for(let i = 0; i < myQuestions.length; i++) {
-      //   const questionDisplay = document.getElementById("current-question");
-         
-      // };
       
       output.push(
         `<div class="slide">
@@ -163,3 +158,4 @@
   nextButton.addEventListener("click", showNextSlide);
 
 })();
+
