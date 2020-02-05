@@ -43,6 +43,7 @@
         answerContainers[questionNumber].style.color = 'lightgreen';
       } else {
         answerContainers[questionNumber].style.color = 'red';
+        secondsLeft - 15;
       }
     });
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
@@ -123,6 +124,26 @@
           c: "npm"
         },
         correctAnswer: "c"
+      },
+      {
+        question: "Which tool can you use to ensure code quality?",
+        answers: {
+          a: "Angular",
+          b: "jQuery",
+          c: "RequireJS",
+          d: "ESLint"
+        },
+        correctAnswer: "d"
+      },
+      {
+        question: "Which tool can you use to ensure code quality?",
+        answers: {
+          a: "Angular",
+          b: "jQuery",
+          c: "RequireJS",
+          d: "ESLint"
+        },
+        correctAnswer: "d"
       },
       {
         question: "Which tool can you use to ensure code quality?",
