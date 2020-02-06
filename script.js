@@ -1,6 +1,6 @@
 (function(){ 
 
-  //Core functions
+  //Building the quiz
   function buildQuiz() {
   const output = [];
 
@@ -27,6 +27,8 @@
   );
     quizContainer.innerHTML = output.join('');
   };
+
+  //Showing the results
 
   function showResults(){
     const answerContainers = quizContainer.querySelectorAll('.answers');
@@ -136,24 +138,24 @@
         correctAnswer: "d"
       },
       {
-        question: "Which tool can you use to ensure code quality?",
+        question: "If we were to write: var someNumber = 5, and someNumber = 7, what would the console log?",
         answers: {
-          a: "Angular",
-          b: "jQuery",
-          c: "RequireJS",
-          d: "ESLint"
+          a: "5",
+          b: "7",
+          c: "undefined",
+          d: "42"
         },
-        correctAnswer: "d"
+        correctAnswer: "b"
       },
       {
-        question: "Which tool can you use to ensure code quality?",
+        question: "Which function takes a string and converts it to an array?",
         answers: {
-          a: "Angular",
-          b: "jQuery",
-          c: "RequireJS",
-          d: "ESLint"
+          a: ".split()",
+          b: ".join()",
+          c: ".reverse()",
+          d: ".push()"
         },
-        correctAnswer: "d"
+        correctAnswer: "a"
       }
     ];
 
