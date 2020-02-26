@@ -10,7 +10,7 @@
         for (letter in currentQuestion.answers) {
           answers.push(
             `<label>
-            <input type="radio" name="question${questionNumber}" value="${letter}">
+            <input class="radioname" type="radio" name="question${questionNumber}" value="${letter}" onclick="questionClick(${letter});">
             ${letter} :
             ${currentQuestion.answers[letter]}
           </label>`
@@ -29,22 +29,36 @@
   };
 
   //Showing the results
-  let questionIndex = 0;
 
 
-  // function for rendering  questions takes an index
+  
+  function questionClick(letter) {
+    console.log(letter);
+  };
 
-  // using the question, render the 1st question
-  function renderQuestion(index) {
-    const currentQuestion = myQuestions[index];
-    for(let answer in currentQuestion.answers){
-      //  Key to the current question a, b, or c
-      answer
-      // Actual value
-      currentQuestion.answers[answer];
-    }
+var radios = document.querySelectorAll(".radioname");
 
-  }
+  for(var i = radios.length; i--; ) {
+    radios[i].onclick = questionClick(radios[i].value);
+};
+
+  
+  // let questionIndex = 0;
+
+
+  // // function for rendering  questions takes an index
+
+  // // using the question, render the 1st question
+  // function renderQuestion(index) {
+  //   const currentQuestion = myQuestions[index];
+  //   for(let answer in currentQuestion.answers){
+  //     //  Key to the current question a, b, or c
+  //     answer
+  //     // Actual value
+  //     currentQuestion.answers[answer];
+  //   }
+
+  // }
 
   // function for checking answer
 
@@ -134,6 +148,7 @@
   const mainEl = document.getElementById("main");
   const leaderboardContainer = document.getElementById("leaderboard");
   var secondsLeft = 101;
+  
 
   //Questions
 
@@ -208,6 +223,7 @@
   submitButton.addEventListener("click", showResults);
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
+  
 
 
 })();
