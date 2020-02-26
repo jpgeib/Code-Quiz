@@ -47,6 +47,7 @@
   }
 
   // function for checking answer
+
   // add event listner to the button
   // event prevent Default
   // check to see if questionIndex is within the bounds of your questions Array
@@ -166,7 +167,7 @@
       correctAnswer: "d"
     },
     {
-      question: "If we were to write: var someNumber = 5, and someNumber = 7, what would the console log?",
+      question: "If we were to write: let someNumber = 5, and someNumber = 7, what would the console log?",
       answers: {
         a: "5",
         b: "7",
