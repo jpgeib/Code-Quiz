@@ -88,10 +88,26 @@ var radios = document.querySelectorAll(".radioname");
         answerContainers[questionNumber].style.color = 'lightgreen';
       } else {
         answerContainers[questionNumber].style.color = 'red';
-        secondsLeft - 15;
       }
     });
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  };
+
+  const wrongChoice = function() {
+    const userInput = optionSelect;
+    
+    if(userInput = myQuestions[0].answers.a || myQuestions[0].answers.b) {
+      secondsLeft - 15;
+    } else if(userInput = myQuestions[1].answers.a || myQuestions[1].answers.b) {
+      secondsLeft - 15;
+    } else if(userInput = myQuestions[2].answers.a || myQuestions[2].answers.b || myQuestions[2].answers.c) {
+      secondsLeft - 15;
+    } else if(userInput = myQuestions[3].answers.a || myQuestions[3].answers.c || myQuestions[3].answers.d) {
+      secondsLeft - 15;
+    } else if(userInput = myQuestions[4].answers.b || myQuestions[4].answers.c || myQuestions[4].answers.d) {
+      secondsLeft - 15;
+    };
+    resultsContainer.innerHTML = `${userInput} is wrong! Choose something else.`
   };
 
   //Timer functions
@@ -148,6 +164,7 @@ var radios = document.querySelectorAll(".radioname");
   const mainEl = document.getElementById("main");
   const leaderboardContainer = document.getElementById("leaderboard");
   var secondsLeft = 101;
+  const optionSelect = document.getElementsByClassName("radioname");
   
 
   //Questions
@@ -223,6 +240,8 @@ var radios = document.querySelectorAll(".radioname");
   submitButton.addEventListener("click", showResults);
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
+  optionSelect.addEventListener("click", wrongChoice);
+
   
 
 
