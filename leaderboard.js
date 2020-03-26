@@ -22,6 +22,6 @@ const clearScores = function() {
     window.location.reload();
 }
 
-document.getElementById("clear").onClick = clearScores;
+document.getElementById("clear").onclick = clearScores;
 
 createLeaderboard();
