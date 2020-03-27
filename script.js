@@ -41,7 +41,36 @@ function buildQuiz() {
 };
 
 function getQuestion() {
-  
+  const currentQuestion = myQuestions[currentQuestionIndex];
+
+  const titleEl = document.getElementById("question-title");
+  titleEl.textContent = currentQuestion.title;
+
+  choicesEl.innerHTML = "";
+
+  currentQuestion.choice.forEach(function(choice, i) {
+    const option = document.createElement("button");
+    option.setAttribute("class", "choice");
+    option.setAttribute("value", choice);
+
+    option.textContent = i + 1 + ". " + choice;
+
+    option.onclick = questionClick;
+
+    choicesEl.appendChild(option);
+  });
+};
+
+function questionClick() {
+  if(this.value !== myQuestions[currentQuestionIndex].correctAnswer) {
+    secondsLeft -= 15;
+
+    if(secondsLeft < 0) {
+      secondsLeft = 0;
+    };
+
+    timer.textContent = secondsLeft;
+  }
 }
 
 function showResults() {
@@ -66,35 +95,35 @@ function showResults() {
 
 
 
-//Page functions
+// //Page functions
 
-function showSlide(n) {
-  slides[currentSlide].classList.remove('active-slide');
-  slides[n].classList.add('active-slide');
-  currentSlide = n;
+// function showSlide(n) {
+//   slides[currentSlide].classList.remove('active-slide');
+//   slides[n].classList.add('active-slide');
+//   currentSlide = n;
 
-  if (currentSlide === 0) {
-    previousButton.style.display = 'none';
-  } else {
-    previousButton.style.display = 'inline-block';
-  };
+//   if (currentSlide === 0) {
+//     previousButton.style.display = 'none';
+//   } else {
+//     previousButton.style.display = 'inline-block';
+//   };
 
-  if (currentSlide === slides.length - 1) {
-    nextButton.style.display = 'none';
-    submitButton.style.display = 'inline-block';
-  } else {
-    nextButton.style.display = 'inline-block';
-    submitButton.style.display = 'none';
-  };
-};
+//   if (currentSlide === slides.length - 1) {
+//     nextButton.style.display = 'none';
+//     submitButton.style.display = 'inline-block';
+//   } else {
+//     nextButton.style.display = 'inline-block';
+//     submitButton.style.display = 'none';
+//   };
+// };
 
-function showNextSlide() {
-  showSlide(currentSlide + 1);
-};
+// function showNextSlide() {
+//   showSlide(currentSlide + 1);
+// };
 
-function showPreviousSlide() {
-  showSlide(currentSlide - 1);
-};
+// function showPreviousSlide() {
+//   showSlide(currentSlide - 1);
+// };
 
 
 
@@ -109,9 +138,9 @@ buildQuiz();
 
 //Pagination
 const previousButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
+// const nextButton = document.getElementById("next");
+// const slides = document.querySelectorAll(".slide");
+// let currentSlide = 0;
 
 //Show the first slide
 
@@ -121,9 +150,9 @@ showSlide(currentSlide);
 //Event listeners
 
 submitButton.addEventListener("click", showResults);
-previousButton.addEventListener("click", showPreviousSlide);
-nextButton.addEventListener("click", showNextSlide);
-optionSelect.addEventListener("click", wrongChoice);
+// previousButton.addEventListener("click", showPreviousSlide);
+// nextButton.addEventListener("click", showNextSlide);
+// optionSelect.addEventListener("click", wrongChoice);
 
 
 
