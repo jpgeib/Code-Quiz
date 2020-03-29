@@ -1,5 +1,33 @@
+const myQuestions = [
+  {
+    question: "Who invented JavaScript?",
+    answers: ["Douglas Crockford", "Sheryl Sandberg", "Brendan Eich"],
+    correctAnswer: "Brendan Eich"
+  },
+  {
+    question: "Which one of these is a JavaScript package manager?",
+    answers: ["Node.js", "TypeScript", "npm"],
+    correctAnswer: "npm"
+  },
+  {
+    question: "Which tool can you use to ensure code quality?",
+    answers: ["Angular", "jQuery", "RequireJS", "ESLint"],
+    correctAnswer: "ESLint"
+  },
+  {
+    question: "If we were to write: let someNumber = 5, and someNumber = 7, what would the console log?",
+    answers: ["5", "7", "undefined", "42"],
+    correctAnswer: "7"
+  },
+  {
+    question: "Which function takes a string and converts it to an array?",
+    answers: [".split()", ".join()", ".reverse()", ".push()"],
+    correctAnswer: ".split()"
+  }
+];
+
 //Quiz elements
-const currentQuestionIndex = 0;
+var currentQuestionIndex = 0;
 
 
 //DOM elements
@@ -21,12 +49,7 @@ function buildQuiz() {
 
   questionsEl.removeAttribute("class");
 
-  
-
-  getQuestion();
-};
-
-//Timer functions
+  //Timer functions
 
   function timeLimit() {
     const timeInterval = setInterval(function () {
@@ -36,21 +59,28 @@ function buildQuiz() {
       if (secondsLeft === 0) {
         clearInterval(timeInterval);
         endQuiz();
+      } else if(currentQuestionIndex === myQuestions.length) {
+        timer.setAttribute("class", "hide");
       }
     }, 1000);
   };
 
   timeLimit();
 
+  getQuestion();
+};
+
+
+
 function getQuestion() {
   const currentQuestion = myQuestions[currentQuestionIndex];
 
-  const titleEl = document.getElementById("question-title");
+  const titleEl = document.getElementById("question");
   titleEl.textContent = currentQuestion.title;
 
   choicesEl.innerHTML = "";
 
-  currentQuestion.choice.forEach(function(choice, i) {
+  currentQuestion.answers.forEach(function(choice, i) {
     const option = document.createElement("button");
     option.setAttribute("class", "choice");
     option.setAttribute("value", choice);
@@ -93,6 +123,7 @@ function questionClick() {
 };
 
 function endQuiz() {
+
   const endScreenEl = document.getElementById("end-screen");
   endScreenEl.removeAttribute("class");
 

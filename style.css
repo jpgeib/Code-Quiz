@@ -66,12 +66,6 @@ li:nth-child(odd) {
   text-align: center;
 }
 
-.scores {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
 .result {
   font-style: italic;
   font-size: 120%;
