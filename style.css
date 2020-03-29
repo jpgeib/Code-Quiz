@@ -1,5 +1,113 @@
+body {
+  font-family: Arial;
+  font-size: 120%;
+}
 
-@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+a {
+  color: #563d7c;
+  text-decoration: none;
+  transition: color 0.1s;
+}
+
+a:hover {
+  color: #8570a5;
+}
+
+button {
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 100%;
+  background-color: #563d7c;
+  border-radius: 5px;
+  padding: 2px 10px;
+  color: white;
+  border: 0;
+  transition: background-color 0.1s;
+}
+
+button:hover {
+  background-color: #8570a5;
+}
+
+.choices button {
+  display: block;
+}
+
+input[type="text"] {
+  font-size: 100%;
+}
+
+ol {
+  padding-left: 0px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+li {
+  padding: 5px;
+  list-style: decimal inside none;
+}
+
+li:nth-child(odd) {
+  background-color: #f3edfc;
+}
+
+.quiz-container {
+  margin: 100px auto 0 auto;
+  max-width: 600px;
+}
+
+.hide {
+  display: none;
+}
+
+.start {
+  text-align: center;
+}
+
+.scores {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.result {
+  font-style: italic;
+  font-size: 120%;
+  margin-top: 20px;
+  padding-top: 10px;
+  color: gray;
+  border-top: 2px solid #ccc;
+}
+
+#time {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
 
 body{
 	font-size: 20px;
@@ -22,10 +130,10 @@ h1{
 .question{
   font-size: 30px;
   margin-bottom: 10px;
-}
+} */
 
 /*Note to self, .answers and .answers label are the code that put each element of the questions array on one slide*/
-.answers {
+/* .answers {
   margin-bottom: 20px;
   text-align: left;
   display: inline-block;
@@ -50,13 +158,13 @@ button{
 }
 button:hover{
 	background-color: #38a;
-}
+} */
 
 
 
 
 
-.slide{
+/* .slide{
   position: absolute;
   left: 0px;
   top: 0px;
@@ -84,5 +192,5 @@ button:hover{
 
 #leaderboard {
     display: none;
-}
+} */
 

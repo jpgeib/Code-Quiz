@@ -21,24 +21,26 @@ function buildQuiz() {
 
   questionsEl.removeAttribute("class");
 
-  //Timer functions
+  
+
+  getQuestion();
+};
+
+//Timer functions
 
   function timeLimit() {
-    let timeInterval = setInterval(function () {
+    const timeInterval = setInterval(function () {
       secondsLeft--;
       timer.textContent = secondsLeft + " seconds remaining...";
 
       if (secondsLeft === 0) {
         clearInterval(timeInterval);
-        alert("Time has run out! Refresh the page to try again.")
+        endQuiz();
       }
     }, 1000);
   };
 
   timeLimit();
-
-  getQuestion();
-};
 
 function getQuestion() {
   const currentQuestion = myQuestions[currentQuestionIndex];
@@ -70,30 +72,74 @@ function questionClick() {
     };
 
     timer.textContent = secondsLeft;
+
+    resultsEl.textContent = "Wrong!";
+  } else {
+    resultsEl.textContent = "Correct!";
+  }
+
+  resultsEl.setAttribute("class", "results");
+  setTimeout(function() {
+    resultsEl.setAttribute("class", "results hide");
+  }, 1000);
+
+  currentQuestionIndex++;
+
+  if(currentQuestionIndex === myQuestions.length) {
+    endQuiz()
+  } else {
+    getQuestion();
+  };
+};
+
+function endQuiz() {
+  const endScreenEl = document.getElementById("end-screen");
+  endScreenEl.removeAttribute("class");
+
+  const total = document.getElementById("total")
+  total.textContent = secondsLeft;
+
+  questionsEl.setAttribute("class", "hide");
+};
+
+function saveScore() {
+  const user = initialsEl.value.trim();
+
+  if(user !== "") {
+    const leaderboard = JSON.parse(window.localStorage.getItem("score-table")) || [];
+
+    const newScore = {
+      score: secondsLeft,
+      user: user
+    };
+
+    leaderboard.push(newScore);
+    window.localStorage.setItem("score-table", JSON.stringify(leaderboard));
+    window.location.href = "leaderboard.html"
   }
 }
 
-function showResults() {
-  const answerContainers = quizContainer.querySelectorAll('.answers');
-
-  let numCorrect = 0;
-
-  myQuestions.forEach((currentQuestion, questionNumber) => {
-    const answerContainer = answerContainers[questionNumber];
-    const selector = `input[name=question${questionNumber}]:checked`;
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-    if (userAnswer === currentQuestion.correctAnswer) {
-      numCorrect++;
-      answerContainers[questionNumber].style.color = 'lightgreen';
-    } else {
-      answerContainers[questionNumber].style.color = 'red';
-    }
-  });
-  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+function enterClick(event) {
+  if(event.key === "Enter") {
+    saveScore();
+  }
 };
 
+//Event listeners
 
+submitButton.addEventListener("click", saveScore);
+startButton.addEventListener("click", buildQuiz);
+initialsEl.onkeyup = enterClick;
+
+
+
+
+
+
+
+
+
+//Scraps from previous attempt
 
 // //Page functions
 
@@ -133,23 +179,21 @@ function showResults() {
 
 
 //Initialize the quiz
-buildQuiz();
+// buildQuiz();
 
 
 //Pagination
-const previousButton = document.getElementById("previous");
+// const previousButton = document.getElementById("previous");
 // const nextButton = document.getElementById("next");
 // const slides = document.querySelectorAll(".slide");
 // let currentSlide = 0;
 
 //Show the first slide
 
-showSlide(currentSlide);
+// showSlide(currentSlide);
 
 
-//Event listeners
 
-submitButton.addEventListener("click", showResults);
 // previousButton.addEventListener("click", showPreviousSlide);
 // nextButton.addEventListener("click", showNextSlide);
 // optionSelect.addEventListener("click", wrongChoice);
