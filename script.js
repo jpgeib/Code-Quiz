@@ -76,7 +76,7 @@ function getQuestion() {
   const currentQuestion = myQuestions[currentQuestionIndex];
 
   const titleEl = document.getElementById("question");
-  titleEl.textContent = currentQuestion.title;
+  titleEl.textContent = currentQuestion.question;
 
   choicesEl.innerHTML = "";
 
