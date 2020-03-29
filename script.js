@@ -140,7 +140,7 @@ function saveScore() {
     const leaderboard = JSON.parse(window.localStorage.getItem("score-table")) || [];
 
     const newScore = {
-      score: secondsLeft,
+      score: total.textContent,
       user: user
     };
 
